@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
+
+    <title>My Photos</title>
+</head>
+<body>
+    <header>
+        <h1>My Photos</h1>
+    </header>
+
+    <div class="container">
+        <div id="img_unit">
+        </div>
+    </div>
+
+    <script>
+        var ajax = new XMLHttpRequest();
+        ajax.open('GET','https://h2o-space.com/htmlbook/images.php');
+        ajax.responseType = 'json';
+        ajax.send(null);
+
+        ajax.onreadystatechange = function() {
+            if (ajax.readyState === XMLHttpRequest.DONE && ajax.status === 200) {
+                                                        //&&は「なおかつ」、さらにifを繋げるときに使う。
+                for (var i=0; i<this.response.length; i++) {
+                    alert(this.response[i].path);
+                }
+            }
+        };
+    </script>
+    
+</body>
+</html>
